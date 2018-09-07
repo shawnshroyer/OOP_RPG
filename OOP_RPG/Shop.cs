@@ -22,6 +22,7 @@ namespace OOP_RPG
             this.WeaponList = new List<Weapon>();
             this.ArmorList = new List<Armor>();
             this.PotionList = new List<Potion>();
+
             this.WeaponCatalog = new Dictionary<string, Weapon>();
             this.ArmorCatalog = new Dictionary<string, Armor>();
             this.PotionCatalog = new Dictionary<string, Potion>();

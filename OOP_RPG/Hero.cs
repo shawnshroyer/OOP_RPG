@@ -34,6 +34,8 @@ namespace OOP_RPG
             this.ArmorsBag = new List<Armor>();
             this.WeaponsBag = new List<Weapon>();
             this.PotionBag = new List<Potion>();
+            this.EquippedWeapon = new Weapon();
+            this.EquippedArmor = new Armor();
             this.Strength = 10;
             this.Defense = 10;
             this.OriginalHP = 30;
@@ -71,42 +73,88 @@ namespace OOP_RPG
 
         public void HeroMenu()
         {
+            Console.WriteLine("Please choose an option by entering a number.");
+            Console.WriteLine("1. View Stats");
+            Console.WriteLine("2. View Inventory");
+            Console.WriteLine("3. Equip Weapon");
+            Console.WriteLine("4. Equip Armor");
+            Console.WriteLine("5. Unequip Weapon");
+            Console.WriteLine("6. unequip Armor");
+            Console.WriteLine("7. Drink Potion");
+            var input = Console.ReadLine();
 
+            switch (input)
+            {
+                case "1":
+                    this.ShowStats();
+                    break;
+                case "2":
+                    this.ShowInventory();
+                    break;
+                case "3":
+                    this.EquipWeapon();
+                    break;
+                case "4":
+                    this.EquipArmor();
+                    break;
+                case "5": //TODO add Remove Weapon
+                case "6": //TODO add Remove Armor
+                case "7":
+                    this.DrinkPotion();
+                    break;
+                default:
+                    Game.MainMenu();
+                    break;
+            }
         }
 
         public void EquipWeapon() {
-            if (WeaponsBag.Any())
+            if (!(this.EquippedWeapon is null))
             {
-                var count = 1;
 
-                foreach (var w in this.WeaponsBag)
+                if (WeaponsBag.Any())
                 {
-                    Console.WriteLine($"{count}. {w.Name} of {w.Strength} Strength");
-                    count++;
-                }
-                Console.WriteLine($"Which weapon would you like to equip?");
+                    var count = 1;
 
-                var select = Console.ReadLine();
-                var bagLocation = 0;
-
-                if (Int32.TryParse(select, out bagLocation))
-                {
-                    if (this.WeaponsBag[bagLocation - 1] != null)
+                    foreach (var w in this.WeaponsBag)
                     {
-                        this.EquippedWeapon = this.WeaponsBag[bagLocation - 1];
+                        Console.WriteLine($"{count}. {w.Name} of {w.Strength} Strength");
+                        count++;
                     }
-                    else { Console.WriteLine($"There was an error!");
+                    Console.WriteLine($"Which weapon would you like to equip?");
+
+                    var select = Console.ReadLine();
+                    var bagLocation = 0;
+
+                    if (Int32.TryParse(select, out bagLocation))
+                    {
+                        if (this.WeaponsBag[bagLocation - 1] != null)
+                        {
+                            this.EquippedWeapon = this.WeaponsBag[bagLocation - 1];
+                        }
+                        else
+                        {
+                            Console.WriteLine($"There was an error!");
+                            Game.MainMenu();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"There was an error!");
                         Game.MainMenu();
                     }
-                }
-                else { Console.WriteLine($"There was an error!");
-                    Game.MainMenu();
-                }
 
-;
-            }
-            else {
-                Console.WriteLine($"You currently have no Weapons in your inventroy\nTime to get some gold and go to the store.");
+    ;
+                }
+                else
+                {
+                    Console.WriteLine($"You currently have no Weapons in your inventroy\nTime to get some gold and go to the store.");
+                    this.HeroMenu();
+                }
+            } else
+            {
+                Console.WriteLine($"You currently have {EquippedWeapon.Name} equipped and will have to remove it to equip new weapon.");
+                this.HeroMenu();
             }
         }
         

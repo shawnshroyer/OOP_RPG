@@ -66,6 +66,7 @@ namespace OOP_RPG
                     this.MainMenu();
                     break;
             }
+            this.MainMenu();
         }
         
         public void Stats() {
