@@ -30,20 +30,8 @@ namespace OOP_RPG
             Console.WriteLine("3. Fight Monster");
             Console.WriteLine("4. Hero Menu");
             Console.WriteLine("5. Shop");
-            var input = Console.ReadLine();
 
-            //if (input == "1") {
-            //    this.Stats();
-            //}
-            //else if (input == "2") {
-            //    this.Inventory();
-            //}
-            //else if (input == "3") {
-            //    this.Fight();
-            //}
-            //else {
-            //    return;
-            //}
+            var input = Console.ReadLine();
 
             switch (input)
             {

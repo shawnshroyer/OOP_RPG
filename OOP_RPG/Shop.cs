@@ -35,9 +35,6 @@ namespace OOP_RPG
 
         public void ShopMenu()
         {
-            //this.Game = new Game();
-            //this.Hero = new Hero();
-
             Console.WriteLine("Please choose an option by entering a number.");
             Console.WriteLine("1. Buy Item");
             Console.WriteLine("2. Sell Item");

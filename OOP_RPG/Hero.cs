@@ -60,10 +60,12 @@ namespace OOP_RPG
             foreach(var w in this.WeaponsBag){
                 Console.WriteLine($"{w.Name} of {w.Strength} Strength");
             }
+            if (!(EquippedWeapon is null)) { Console.WriteLine($"You currently have {EquippedWeapon.Name} of {EquippedWeapon.Strength} of Strength Equipped"); }
             Console.WriteLine("Armor: ");
             foreach(var a in this.ArmorsBag){
                 Console.WriteLine($"{a.Name} of {a.Defense} Defense");
             }
+            if (!(EquippedArmor is null)) { Console.WriteLine($"You currently have {EquippedArmor.Name} of {EquippedArmor.Defense} of Defense Equipped"); }
             Console.WriteLine("Potion: ");
             foreach (var p in this.PotionBag)
             {
@@ -97,7 +99,9 @@ namespace OOP_RPG
                 case "4":
                     this.EquipArmor();
                     break;
-                case "5": //TODO add Remove Weapon
+                case "5":
+                    this.RemoveWeapon();
+                    break;
                 case "6": //TODO add Remove Armor
                 case "7":
                     this.DrinkPotion();
@@ -131,20 +135,20 @@ namespace OOP_RPG
                         if (this.WeaponsBag[bagLocation - 1] != null)
                         {
                             this.EquippedWeapon = this.WeaponsBag[bagLocation - 1];
+                            this.WeaponsBag.Remove(this.WeaponsBag[bagLocation - 1]);
+                            this.Strength += this.EquippedWeapon.Strength;
                         }
                         else
                         {
-                            Console.WriteLine($"There was an error!");
-                            Game.MainMenu();
+                            Console.WriteLine($"There is nothing in this part of your bag!");
+                            this.HeroMenu();
                         }
                     }
                     else
                     {
                         Console.WriteLine($"There was an error!");
-                        Game.MainMenu();
+                        this.HeroMenu();
                     }
-
-    ;
                 }
                 else
                 {
@@ -171,8 +175,44 @@ namespace OOP_RPG
         {
             //TODO: Add ability to drink potion.
         }
-        
-        //TODO: Add ability to remove weapon
+
+        public void RemoveWeapon()
+        {
+            if (!(this.EquippedWeapon is null))
+            {
+                Console.WriteLine($"You currently have {EquippedWeapon.Name} of {EquippedWeapon.Strength} strength equipped");
+                Console.WriteLine($"Would you like to remove {EquippedWeapon.Name} of {EquippedWeapon.Strength}?");
+
+                var input = Console.ReadLine();
+
+                switch (input.ToLower())
+                {
+                    case "yes":
+                        this.Strength -= EquippedWeapon.Strength;
+                        WeaponsBag.Add(EquippedWeapon);
+                        Console.WriteLine($"Your {EquippedWeapon.Name} of {EquippedWeapon.Strength} strength has been removed.");
+                        Console.WriteLine($"You are now weaker, loosing {EquippedWeapon.Strength} strength, and now have a stgrength of {this.Strength}");
+                        EquippedWeapon = null;
+                        break;
+                    case "no":
+                        break;
+                    default:
+                        Console.WriteLine($"You have chosen an invalid option try again");
+                        this.RemoveWeapon();
+                        break;
+                }
+
+
+            }
+            else
+            {
+                Console.WriteLine($"You currently have no Weapon equipped and stronly recommend you equip one.");
+                this.HeroMenu();
+            }
+        }
+
+
+
         //TODO: Add ability to remove armor
     }
 }
