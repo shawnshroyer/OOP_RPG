@@ -37,7 +37,7 @@ namespace OOP_RPG
             //var enemy = this.Monsters[0];
             //var rnd = new Random();
             //var enemy = this.Monsters[new Random().Next(this.Monsters.Count)];
-            Console.WriteLine("You've encountered a " + Enemy.Name + "! " + Enemy.Strength + " Strength/" + Enemy.Defense + " Defense/" +
+            Console.WriteLine("\nYou've encountered a " + Enemy.Name + "! " + Enemy.Strength + " Strength/" + Enemy.Defense + " Defense/" +
             Enemy.CurrentHP + " HP. What will you do?");
             Console.WriteLine("1. Fight");
             var input = Console.ReadLine();

@@ -19,55 +19,62 @@ namespace OOP_RPG
             Console.WriteLine("Welcome hero!");
             Console.WriteLine("Please enter your name:");
             this.Hero.Name = Console.ReadLine();
-            Console.WriteLine("Hello " + Hero.Name);
+            Console.WriteLine($"\nHello {Hero.Name}");
             this.MainMenu();
         }
         
         public void MainMenu() {
-            Console.WriteLine("Please choose an option by entering a number.");
+            Console.WriteLine("\nPlease choose an option by entering a number.");
             Console.WriteLine("1. View Stats");
             Console.WriteLine("2. View Inventory");
             Console.WriteLine("3. Fight Monster");
             Console.WriteLine("4. Hero Menu");
             Console.WriteLine("5. Shop");
+            Console.WriteLine("6. Exit Game");
 
             var input = Console.ReadLine();
 
             switch (input)
             {
                 case "1":
+                    Console.Clear();
                     this.Stats();
                     break;
                 case "2":
+                    Console.Clear();
                     this.Inventory();
                     break;
                 case "3":
+                    Console.Clear();
                     this.Fight();
                     break;
                 case "4":
+                    Console.Clear();
                     Hero.HeroMenu();
                     break;
                 case "5":
+                    Console.Clear();
                     Shop.ShopMenu();
                     break;
+                case "6":
+                    Environment.Exit(0);
+                    break;
                 default:
+                    Console.Clear();
                     this.MainMenu();
                     break;
             }
+            Console.Clear();
             this.MainMenu();
         }
         
         public void Stats() {
             Hero.ShowStats();
-            Console.WriteLine("Press any key to return to main menu.");
-            Console.ReadKey();
             this.MainMenu();
         }
         
         public void Inventory() {
             Hero.ShowInventory();
-            Console.WriteLine("Press any key to return to main menu.");
-            Console.ReadKey();
             this.MainMenu();
         }
         

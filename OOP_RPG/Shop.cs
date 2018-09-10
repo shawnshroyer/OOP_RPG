@@ -64,7 +64,7 @@ namespace OOP_RPG
 
         public void BuyGoods()
         {
-            Console.WriteLine("******** Buy Menu ********");
+            Console.WriteLine("\n******** Buy Menu ********");
             Console.WriteLine("Please choose an option by entering a number.");
             Console.WriteLine("1. View Weapons");
             Console.WriteLine("2. View Armor");
@@ -76,25 +76,32 @@ namespace OOP_RPG
             switch (input)
             {
                 case "1":
+                    Console.Clear();
                     this.ShowWeapons();
                     this.ExecutePuchase();
                     break;
                 case "2":
+                    Console.Clear();
                     this.ShowArmor();
                     this.ExecutePuchase();
                     break;
                 case "3":
+                    Console.Clear();
                     this.ShowPotions();
                     this.ExecutePuchase();
                     break;
                 case "4":
+                    Console.Clear();
                     this.ShopInventory();
                     this.ExecutePuchase();
                     break;
                 case "5":
+                    Console.Clear();
                     this.ShopMenu();
                     break;
                 default:
+                    Console.Clear();
+                    this.ShopMenu();
                     break;
             }
             this.BuyGoods();
@@ -102,7 +109,7 @@ namespace OOP_RPG
 
         public void SellGoods()
         {
-            Console.WriteLine("******** Sell Menu ********");
+            Console.WriteLine("\n******** Sell Menu ********");
             Console.WriteLine("Please choose an option by entering a number.");
             Console.WriteLine("1. View Hero Weapons");
             Console.WriteLine("2. View Hero Armor");
@@ -114,25 +121,32 @@ namespace OOP_RPG
             switch (input)
             {
                 case "1":
+                    Console.Clear();
                     this.HeroWeaponSell();
                     this.ExecuteSell();
                     break;
                 case "2":
+                    Console.Clear();
                     this.HeroArmorSell();
                     this.ExecuteSell();
                     break;
                 case "3":
+                    Console.Clear();
                     this.HeroPotionSell();
                     this.ExecuteSell();
                     break;
                 case "4":
+                    Console.Clear();
                     this.HeroSellItems();
                     this.ExecuteSell();
                     break;
                 case "5":
+                    Console.Clear();
                     this.ShopMenu();
                     break;
                 default:
+                    Console.Clear();
+                    this.ShopMenu();
                     break;
             }
         }
