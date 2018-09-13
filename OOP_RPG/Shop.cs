@@ -122,16 +122,40 @@ namespace OOP_RPG
             {
                 case "1":
                     Console.Clear();
+                    if (this.Hero.WeaponsBag.Count == 0)
+                    {
+                        Console.WriteLine("\nThere is currently no weapons in your bag that you can sell at this time.");
+                        Console.WriteLine("\nPress any key to go back to the shop menu");
+                        Console.ReadKey();
+                        Console.Clear();
+                        this.ShopMenu();
+                    }
                     this.HeroWeaponSell();
                     this.ExecuteSell();
                     break;
                 case "2":
                     Console.Clear();
+                    if (this.Hero.ArmorsBag.Count == 0)
+                    {
+                        Console.WriteLine("\nThere is currently no armor in your bag that you can sell at this time.");
+                        Console.WriteLine("\nPress any key to go back to the shop menu");
+                        Console.ReadKey();
+                        Console.Clear();
+                        this.ShopMenu();
+                    }
                     this.HeroArmorSell();
                     this.ExecuteSell();
                     break;
                 case "3":
                     Console.Clear();
+                    if (this.Hero.PotionBag.Count == 0)
+                    {
+                        Console.WriteLine("\nThere is currently no potions in your bag that you can sell at this time.");
+                        Console.WriteLine("\nPress any key to go back to the shop menu");
+                        Console.ReadKey();
+                        Console.Clear();
+                        this.ShopMenu();
+                    }
                     this.HeroPotionSell();
                     this.ExecuteSell();
                     break;
@@ -155,7 +179,8 @@ namespace OOP_RPG
             var pick = "";
 
             do {
-                Console.WriteLine($"Which item would you like to purchase?");
+                Console.WriteLine($"\nWhich item would you like to purchase?");
+                Console.WriteLine($"Type E if you do not wish to purch anything at this time.");
                 pick = Console.ReadLine();
             } while (pick.Length <= 0);
 
@@ -230,6 +255,11 @@ namespace OOP_RPG
                     }
 
                     break;
+                case "e":
+                    Console.Clear();
+                    this.ShopMenu();
+                    break;
+
                 default:
                     Console.WriteLine($"Item {pick} does not exist...");
                     break;
@@ -243,12 +273,17 @@ namespace OOP_RPG
 
             if (this.Hero.WeaponsBag.Count==0 && this.Hero.ArmorsBag.Count==0 && this.Hero.PotionBag.Count==0)
             {
-                Console.WriteLine("There are currently no items in your bags that you can sell at this time.");
+                Console.WriteLine("\nThere are currently no items in your bags that you can sell at this time.");
+                Console.WriteLine("\nPress any key to go back to the shop menu");
+                Console.ReadKey();
+                Console.Clear();
+                this.ShopMenu();
             }
 
             do
             {
-                Console.WriteLine($"Which item would you like to sell?");
+                Console.WriteLine($"\nWhich item would you like to sell?");
+                Console.WriteLine($"Type E if you do not wish to purch anything at this time.");
                 pick = Console.ReadLine();
             } while (pick.Length <= 0);
 
@@ -311,6 +346,10 @@ namespace OOP_RPG
                         Console.WriteLine($"Item {pick} does not exist...");
                     }
 
+                    break;
+                case "e":
+                    Console.Clear();
+                    this.ShopMenu();
                     break;
                 default:
                     Console.WriteLine($"Item {pick} does not exist...");
