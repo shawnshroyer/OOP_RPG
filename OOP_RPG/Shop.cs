@@ -45,15 +45,19 @@ namespace OOP_RPG
             switch (input)
             {
                 case "1":
+                    Console.Clear();
                     this.BuyGoods();
                     break;
                 case "2":
+                    Console.Clear();
                     this.SellGoods();
                     break;
                 case "3":
+                    Console.Clear();
                     Game.Hero.ShowInventory();
                     break;
                 case "4":
+                    Console.Clear();
                     Game.MainMenu();
                     break;
                 default:
