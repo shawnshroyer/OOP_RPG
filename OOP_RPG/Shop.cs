@@ -241,6 +241,11 @@ namespace OOP_RPG
         {
             var pick = "";
 
+            if (this.Hero.WeaponsBag.Count==0 && this.Hero.ArmorsBag.Count==0 && this.Hero.PotionBag.Count==0)
+            {
+                Console.WriteLine("There are currently no items in your bags that you can sell at this time.");
+            }
+
             do
             {
                 Console.WriteLine($"Which item would you like to sell?");
@@ -414,7 +419,6 @@ namespace OOP_RPG
                 if (this.Hero.WeaponsBag.Count == 0)
             {
                 Console.WriteLine($"You have no Weapons to sell at this time.");
-                this.ShopMenu();
             }
             else
             {
@@ -436,7 +440,6 @@ namespace OOP_RPG
             if (this.Hero.ArmorsBag.Count == 0)
             {
                 Console.WriteLine($"You have no Armor to sell at this time.");
-                this.ShopMenu();
             }
             else
             {
@@ -458,7 +461,6 @@ namespace OOP_RPG
             if (this.Hero.PotionBag.Count == 0)
             {
                 Console.WriteLine($"You have no postions to sell at this time.");
-                this.ShopMenu();
             }
             else
             {

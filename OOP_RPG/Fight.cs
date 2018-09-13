@@ -21,15 +21,8 @@ namespace OOP_RPG
             this.AddMonster("Ghoul", 15, 15, 8);
         }
         
-        public void AddMonster(string name, int strength, int defense, int hp) {
-            //var monster = new Monster();
-            //monster.Name = name;
-            //monster.Strength = strength;
-            //monster.Defense = defense;
-            //monster.OriginalHP = hp;
-            //monster.CurrentHP = hp;
-            //this.Monsters.Add(monster);
-
+        public void AddMonster(string name, int strength, int defense, int hp)
+        {
             this.Monsters.Add(new Monster(name, strength, defense, hp));
         }
         
@@ -37,10 +30,13 @@ namespace OOP_RPG
             //var enemy = this.Monsters[0];
             //var rnd = new Random();
             //var enemy = this.Monsters[new Random().Next(this.Monsters.Count)];
+
             Console.WriteLine("\nYou've encountered a " + Enemy.Name + "! " + Enemy.Strength + " Strength/" + Enemy.Defense + " Defense/" +
             Enemy.CurrentHP + " HP. What will you do?");
+
             Console.WriteLine("1. Fight");
             var input = Console.ReadLine();
+
             if (input == "1") {
                 this.HeroTurn();
             }
@@ -65,6 +61,7 @@ namespace OOP_RPG
            Console.WriteLine("You did " + damage + " damage!");
            
            if(Enemy.CurrentHP <= 0){
+                this.Enemy = new Monster();
                this.Win();
            }
            else
