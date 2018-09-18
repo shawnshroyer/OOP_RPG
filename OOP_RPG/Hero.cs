@@ -12,6 +12,7 @@ namespace OOP_RPG
         public int Defense { get; set; }
         public int OriginalHP { get; set; }
         public int CurrentHP { get; set; }
+        public int Speed { get; set; }
         public int Gold { get; set; }
 
         public Game Game { get; set; }
@@ -40,6 +41,7 @@ namespace OOP_RPG
             this.Defense = 10;
             this.OriginalHP = 30;
             this.CurrentHP = 30;
+            this.Speed = 10;
             this.Gold = 100;
 
             this.Game = game;
@@ -48,10 +50,11 @@ namespace OOP_RPG
         //These are the Methods of our Class.
         public void ShowStats() {
             Console.WriteLine("\n*****" + this.Name + "*****");
-            Console.WriteLine("Strength: " + this.Strength);
-            Console.WriteLine("Defense: " + this.Defense);
-            Console.WriteLine("Hitpoints: " + this.CurrentHP + "/" + this.OriginalHP);
-            Console.WriteLine("Gold: " + this.Gold);
+            Console.WriteLine($"Strength: {this.Strength}");
+            Console.WriteLine($"Defense: {this.Defense}");
+            Console.WriteLine($"Speed: {this.Speed}");
+            Console.WriteLine($"Hitpoints: {this.CurrentHP} / {this.OriginalHP}");
+            Console.WriteLine($"Gold: {this.Gold}");
 
             Console.WriteLine("\nPress any key to continue.");
             Console.ReadKey();

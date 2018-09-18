@@ -15,15 +15,15 @@ namespace OOP_RPG
             this.Enemy = enemy;
             this.Hero = hero;
             this.Game = game;
-            this.AddMonster("Squid", 9, 8, 20);
-            this.AddMonster("Goblin", 10, 10, 10);
-            this.AddMonster("Ghost", 5, 2, 2);
-            this.AddMonster("Ghoul", 15, 15, 8);
+            this.AddMonster("Squid", 9, 8, 20, 8);
+            this.AddMonster("Goblin", 10, 10, 10, 10);
+            this.AddMonster("Ghost", 5, 2, 2, 15);
+            this.AddMonster("Ghoul", 15, 15, 8, 5);
         }
         
-        public void AddMonster(string name, int strength, int defense, int hp)
+        public void AddMonster(string name, int strength, int defense, int hp, int speed)
         {
-            this.Monsters.Add(new Monster(name, strength, defense, hp));
+            this.Monsters.Add(new Monster(name, strength, defense, hp, speed));
         }
         
         public void Start() {
@@ -31,16 +31,20 @@ namespace OOP_RPG
             //var rnd = new Random();
             //var enemy = this.Monsters[new Random().Next(this.Monsters.Count)];
 
-            Console.WriteLine("\nYou've encountered a " + Enemy.Name + "! " + Enemy.Strength + " Strength/" + Enemy.Defense + " Defense/" +
-            Enemy.CurrentHP + " HP. What will you do?");
+            Console.WriteLine($"\nYou've encountered a {Enemy.Name}!");
+            Console.WriteLine($"{Enemy.Strength} Strength/{Enemy.Defense} Defense/{Enemy.CurrentHP} HP/{Enemy.Speed} Speed. What will you do?\n");
 
             Console.WriteLine("1. Fight");
             var input = Console.ReadLine();
 
+            //TODO: Add run, moves on to next monster if successful
+            //TODO: Add main menu
+
             if (input == "1") {
                 this.HeroTurn();
             }
-            else { 
+            else {
+                Console.Clear();
                 this.Game.MainMenu();
             }
         }
